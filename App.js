@@ -6,6 +6,7 @@ import {
   TextInput,
   Button,
   ScrollView,
+  FlatList,
 } from 'react-native'
 
 export default function App() {
@@ -27,7 +28,10 @@ export default function App() {
     //using the spread Operator to add new elements into the courseGoals array
     // setCourseGoals([...courseGoals, enteredGoal])
     //Better syntax guaranteed to get my CurrentStateSnapshot
-    setCourseGoals((currentGoals) => [...currentGoals, enteredGoal])
+    setCourseGoals((currentGoals) => [
+      ...currentGoals,
+      { id: Math.random().toString(), value: enteredGoal },
+    ])
   }
 
   return (
@@ -43,13 +47,15 @@ export default function App() {
       </View>
 
       {/* output list of items/setGoals */}
-      <ScrollView>
-        {courseGoals.map((goal) => (
-          <View style={styles.listItem} key={goal}>
-            <Text>{goal}</Text>
+      <FlatList
+        keyExtractor={(item, index) => item.id}
+        data={courseGoals}
+        renderItem={(itemData) => (
+          <View style={styles.listItem}>
+            <Text>{itemData.item.value}</Text>
           </View>
-        ))}
-      </ScrollView>
+        )}
+      />
     </View>
   )
 }

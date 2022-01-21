@@ -1,31 +1,68 @@
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 
 export default function App() {
+  const [enteredGoal, setEnteredGoal] = useState('')
+  const [courseGoals, setCourseGoals] = useState([])
+
+  //React Narive events are much more powerful
+  //eg on change Text i dont have to pass param manually
+  //They are also different from the Web beecause they are of different Native Components/
+  //Covered So far
+  //(a)onChangeText
+  //(b)onPress
+  const goalInputHandler = (enteredText) => {
+    setEnteredGoal(enteredText)
+  }
+
+  //add new Goal
+  const addGoalHandler = () => {
+    //using the spread Operator to add new elements into the courseGoals array
+    // setCourseGoals([...courseGoals, enteredGoal])
+    //Better syntax guaranteed to get my CurrentStateSnapshot
+    setCourseGoals((currentGoals) => [...currentGoals, enteredGoal])
+  }
+
   return (
-    <View style={{ padding: 50 }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+    <View style={styles.screen}>
+      <View style={styles.inputContainer}>
         <TextInput
           placeholder='Course Goal'
-          style={{
-            width: '80%',
-            borderColor: 'black',
-            borderBottomWidth: 1,
-            padding: 10,
-          }}
+          style={styles.input}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
         />
-        <Button title='ADD' />
+        <Button title='ADD' onPress={addGoalHandler} />
       </View>
 
-      <View></View>
+      {/* output list of items/setGoals */}
+      <View>
+        {courseGoals.map((goal) => (
+          <Text key={goal}>{goal}</Text>
+        ))}
+      </View>
     </View>
   )
 }
 
 //i can clearly look at this Objecr
-const styles = StyleSheet.create({})
+//The stylesheet is an Object that comes from Javascript
+//Advantages:
+//(a)Performance optimization/
+//(b)It has got better error checking.React Native will detect erronious Values.
+const styles = StyleSheet.create({
+  screen: {
+    padding: 50,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  input: {
+    width: '80%',
+    borderColor: 'black',
+    borderBottomWidth: 1,
+    padding: 10,
+  },
+})

@@ -56,6 +56,40 @@ The dynamic value passed to reactnative style is an Object.
 (c)Align-items----aligns the flex items along their cross axis.
 
 
+```
+
+**Inline stlying**
+
+```
+As you write more and more code, there comes a point where inline styling becomes cumbersome for your project.
+
+It is therefore recommended that we use a stlyesheet Object.
+
+//i can clearly look at this Objecr
+//The stylesheet is an Object that comes from Javascript
+//Advantages:
+//(a)Performance optimization/
+//(b)It has got better error checking.React Native will detect erronious Values.
+
+```
+
+**React Native Events**
+```
+ //React Narive events are much more powerful
+  //eg on change Text i dont have to pass param manually
+  //They are also different from the Web beecause they are of different Native Components/
+  //Covered So far
+  //(a)onChangeText
+  //(b)onPress
+
+Better sytax for updating myState
+ //using the spread Operator to add new elements into the courseGoals array
+// setCourseGoals([...courseGoals, enteredGoal])
+
+//Better syntax guaranteed to get my CurrentStateSnapshot
+
+setEnteredGoals((currentGoals) => [...currentGoals, enteredGoal])
+
 
 ```
 
@@ -64,4 +98,5 @@ The dynamic value passed to reactnative style is an Object.
 ```
 
 Mbugua Caleb
+
 ```

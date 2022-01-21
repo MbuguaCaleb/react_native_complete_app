@@ -106,6 +106,8 @@ setEnteredGoals((currentGoals) => [...currentGoals, enteredGoal])
 
 It is a better way of looping through a List of Items.
 
+It Optimizez scrolling by rendering what is required.
+
 It takes in two props(data and render items)
 
 It takes in data as a prop and then gives you an iteration of items that will be lopped through
@@ -142,6 +144,20 @@ I override the default key in a flat list using KeyExtractor.
           </View>
         )}
   />
+
+```
+
+**React Basics**
+
+```
+Remember the Basics about Children props and how they are used.
+
+Passed in between the <componet> </Component>
+
+extracted as props.children
+
+Remember react Native Rule, any text must be rendered within a Text Component.
+
 
 ```
 
